@@ -9,6 +9,6 @@
   #sh <(curl -L https://nixos.org/nix/install)
 
   # Continue the rest of the install in a new shell.
-  sh <(curl -L https://setup.example.com)
+  sh <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/setup.sh)
 
 } # End of wrapping.
