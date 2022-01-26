@@ -3,5 +3,5 @@
 To setup up a new machine run:
 
 ```sh
-sh <(curl -L http://foo.example.com)
+sh <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/bootstrap.sh)
 ```
