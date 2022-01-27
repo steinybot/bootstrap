@@ -15,7 +15,7 @@
 
   # This is a hack to bootstrap home manager. Is there a better way?
   # FIXME: https://github.com/NixOS/nix/issues/6004
-  nix-shell "https://github.com/steinybot/bootstrap/archive/main.tar.gz" --run "home-manager switch"
+  nix-shell "https://github.com/steinybot/bootstrap/archive/main.tar.gz" --run 'home-manager -b "backup-before-bootstrap" switch'
 
 }
 
