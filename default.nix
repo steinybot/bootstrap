@@ -6,6 +6,7 @@ pkgs.mkShell {
   ];
   shellHook = ''
     set -euo pipefail
-    home-manager -f '${./home-bootstrap.nix}' -b 'backup-before-bootstrap' switch
+    set -x
+    home-manager -f '${./home-bootstrap.nix}' -b 'backup-before-bootstrap' -vvv switch
   '';
 }
