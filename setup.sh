@@ -16,7 +16,7 @@
   # This is a hack to bootstrap home manager. Is there a better way?
   # FIXME: Nix loves to cache this somewhere and often does not see any updates.
   #nix-shell "https://github.com/steinybot/bootstrap/archive/main.tar.gz" --run "home-manager switch"
-  nix-shell "https://github.com/steinybot/bootstrap/archive/main.tar.gz"
+  nix-shell "https://github.com/steinybot/bootstrap/archive/main.tar.gz" -vvv
 
 }
 
