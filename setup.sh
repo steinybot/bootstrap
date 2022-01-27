@@ -11,9 +11,9 @@
   NIX_STATE_DIR="/nix/var/nix"
   export NIX_PATH="${NIX_PATH:-${HOME}/.nix-defexpr/channels:nixpkgs=${NIX_STATE_DIR}/profiles/per-user/root/channels/nixpkgs:${NIX_STATE_DIR}/profiles/per-user/root/channels}"
 
-  nix-shell "https://github.com/nix-community/home-manager/archive/master.tar.gz" -A install
+  command -v home-manager || nix-shell "https://github.com/nix-community/home-manager/archive/master.tar.gz" -A install
 
-  #home-manager -f "https://raw.githubusercontent.com/steinybot/bootstrap/main/home-bootstrap.nix" switch
+  # FIXME: Nix loves to cache this somewhere and often does not see any updates.
   nix-shell "https://github.com/steinybot/bootstrap/archive/main.tar.gz"
 
 }
