@@ -6,11 +6,15 @@
 
   set -euo pipefail
 
-  echo "Downloading and running Nix installer"
+  install_nix() {
+    echo "Downloading and running Nix installer"
+
+    sh <(curl -L https://nixos.org/nix/install)
+  }
 
   # Install Nix.
   # See https://nixos.org/download.html#nix-install-macos.
-  sh <(curl -L https://nixos.org/nix/install)
+  [ -e /nix ] || install_nix
 
   echo "Downloading the setup script and running in a sub shell"
 
