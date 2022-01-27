@@ -5,6 +5,6 @@ pkgs.mkShell {
     git
   ];
   shellHook = ''
-    home-manager -f '${./home-bootstrap.nix}' switch
+    home-manager -f '${./home-bootstrap.nix}' -b '.backup-before-bootstrap' switch
   '';
 }
