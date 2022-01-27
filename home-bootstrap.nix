@@ -23,5 +23,5 @@
   home.file.".config/nixpkgs/home.nix".source = "${fetchGit {
     url = "https://github.com/steinybot/dotfiles.git";
     ref = "main";
-  }}/.config/nixpkgs/home.nix";
+  }}/home/.config/nixpkgs/home.nix";
 }
