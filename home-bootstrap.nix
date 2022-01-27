@@ -18,4 +18,10 @@
 
   # Let Home Manager install and manage itself.
   programs.home-manager.enable = true;
+
+  # Link home.nix from the dotfiles repository.
+  home.file."home.nix".source = "${fetchGit {
+    url = "git@github.com:steinybot/dotfiles.git";
+    ref = "main";
+  }}/.config/nixpkgs/home.nix";
 }
