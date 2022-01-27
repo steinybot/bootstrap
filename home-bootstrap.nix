@@ -20,7 +20,7 @@
   programs.home-manager.enable = true;
 
   # Link home.nix from the dotfiles repository.
-  home.file."home.nix".source = "${fetchGit {
+  home.file.".config/nixpkgs/home.nix".source = "${fetchGit {
     url = "https://github.com/steinybot/dotfiles.git";
     ref = "main";
   }}/.config/nixpkgs/home.nix";
