@@ -13,6 +13,8 @@
 
   nix-shell "https://github.com/nix-community/home-manager/archive/master.tar.gz" -A install
 
+  home-manager -f "https://raw.githubusercontent.com/steinybot/bootstrap/main/home-bootstrap.nix" switch
+
 }
 
 # End of wrapping.
