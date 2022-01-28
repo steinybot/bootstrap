@@ -10,9 +10,6 @@ let
   homeNixFile = "${dotFilesRepo}/home/.config/nixpkgs/home.nix";
 in
 pkgs.mkShell {
-  buildInputs = with pkgs; [
-    git
-  ];
   shellHook = ''
     set -euo pipefail
     home-manager -f '${homeNixFile}' -b 'backup-before-bootstrap' -v switch
