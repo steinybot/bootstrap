@@ -15,7 +15,8 @@
 
   # This is a hack to bootstrap home manager. Is there a better way?
   # FIXME: https://github.com/NixOS/nix/issues/6004
-  nix-shell "https://github.com/steinybot/bootstrap/archive/main.tar.gz" --run "exit"
+  # The double nix-shell gives us git in case XCode hasn't been setup yet.
+  nix-shell -p git --run 'nix-shell "https://github.com/steinybot/bootstrap/archive/main.tar.gz" --run "exit"'
 
 }
 
