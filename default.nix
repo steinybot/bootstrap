@@ -7,7 +7,7 @@ let
     ref = "main";
   };
 
-  homeNixFile = "${dotFilesRepo}/home-manager/home.nix";
+  homeNixFile = "${dotFilesRepo}/home/.config/nixpkgs/home.nix";
 in
 pkgs.mkShell {
   shellHook = ''
