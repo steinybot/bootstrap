@@ -14,9 +14,8 @@
   command -v home-manager || nix-shell "https://github.com/nix-community/home-manager/archive/master.tar.gz" -A install
 
   # This is a hack to bootstrap home manager. Is there a better way?
-  # FIXME: https://github.com/NixOS/nix/issues/6004
   # The double nix-shell gives us git in case XCode hasn't been setup yet.
-  nix-shell -p git --run 'nix-shell "https://github.com/steinybot/bootstrap/archive/main.tar.gz" --run "exit"'
+  nix-shell -p git --run 'nix-shell "https://github.com/steinybot/bootstrap/archive/main.tar.gz" --option tarball-ttl 0 --run "exit"'
 
 }
 

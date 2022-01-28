@@ -12,6 +12,6 @@ in
 pkgs.mkShell {
   shellHook = ''
     set -euo pipefail
-    home-manager -f '${homeNixFile}' -b 'backup-before-bootstrap' -v switch
+    home-manager -f '${homeNixFile}' -b 'backup-before-bootstrap' -v --option tarball-ttl 0 switch
   '';
 }
