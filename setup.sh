@@ -1,4 +1,4 @@
-#!/usr/bin/env sh
+#!/usr/bin/env bash
 
 # This script continues the bootstrap setup of a new macOS machine.
 
