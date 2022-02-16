@@ -16,6 +16,15 @@
   # See https://nixos.org/download.html#nix-install-macos.
   [ -e /nix ] || install_nix
 
+  install_xcode() {
+    echo "Installing Xcode"
+
+    xcode-select --install
+  }
+
+  # Install Xcode.
+  xcode-select -p >/dev/null || install_xcode
+
   echo "Downloading the setup script and running in a sub shell"
 
   # Continue the rest of the install in a new shell.
