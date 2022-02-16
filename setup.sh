@@ -16,9 +16,7 @@
 
   sign_in_to_app_store() {
     set -x
-    read -r -d '' command <<EOM
     echo hello
-EOM
     nix-shell -p lastpass-cli pinentry --command "${command}"
 
     # TODO: Get Apple ID password and read for enter key.
