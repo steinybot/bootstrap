@@ -38,8 +38,7 @@ true # Ignore the non-zero exit code from read.
 
     echo "Installing Xcode"
 
-    # TODO: Use mas to install Xcode.
-    exit 1
+    mas install 497799835
   }
 
   # Install Xcode.
