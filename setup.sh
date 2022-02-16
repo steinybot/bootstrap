@@ -17,7 +17,7 @@
   sign_in_to_app_store() {
     set -x
     local command
-    read -r -d '' command << EOM
+    read -r -d '' command <<EOM
 set -euxo pipefail
 lpass login '${LPASS_USERNAME}'
 lpass show --clip --password '${LPASS_APPLE_ID}'
