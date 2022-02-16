@@ -33,12 +33,21 @@ true # Ignore the non-zero exit code from read.
     nix-shell -p lastpass-cli pinentry --command "${command}"
   }
 
-  install_xcode() {
-    sign_in_to_app_store
-
+  auto_install_xcode() {
     echo "Installing Xcode"
+    mas purchase 497799835
+  }
 
-    mas install 497799835
+  manual_install_xcode() {
+    echo
+    echo "Please manually install Xcode from the App Store."
+    open -a "App Store"
+    read -r -s -p $'Press enter/return when complete.\n'
+  }
+
+  install_xcode() {
+    mas account >/dev/null || sign_in_to_app_store
+    auto_install_xcode || manual_install_xcode
   }
 
   # Install Xcode.
@@ -47,7 +56,6 @@ true # Ignore the non-zero exit code from read.
 
   install_home_manager() {
     echo "Installing Home Manager"
-
     nix-shell "https://github.com/nix-community/home-manager/archive/master.tar.gz" -A install
   }
 
