@@ -15,7 +15,6 @@
   LPASS_APPLE_ID="3603553886062660982"
 
   sign_in_to_app_store() {
-    set -x
     local command
     read -r -d '' command <<EOM ||
 set -euxo pipefail
