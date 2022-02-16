@@ -19,20 +19,19 @@
     local command
     read -r -d '' command <<EOM ||
 set -euxo pipefail
+echo
+read -p "Press enter/return to start LastPass to get Apple ID password."
 lpass login '${LPASS_USERNAME}'
 lpass show --clip --password '${LPASS_APPLE_ID}'
 echo
 echo "Please sign in to the App Store."
-echo "Your Apple ID Password has been copied to the clipboard."
+echo "Apple ID Password has been copied to the clipboard."
 open -a "App Store"
-read -p "Press enter/return when complete.
+read -p "Press enter/return when complete."
 exit 0
 EOM
 true # Ignore the non-zero exit code from read.
     nix-shell -p lastpass-cli pinentry --command "${command}"
-
-    # TODO: Get Apple ID password and read for enter key.
-    exit 1
   }
 
   install_xcode() {
