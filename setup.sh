@@ -13,7 +13,7 @@
 
   sign_in_to_app_store() {
     echo "Please sign in to the App Store"
-    nix-shell -p lastpass-cli -p gnupg
+    nix-shell -p lastpass-cli pinentry
 
     # TODO: Get Apple ID password and read for enter key.
     exit 1
