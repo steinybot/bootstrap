@@ -11,9 +11,22 @@
   NIX_STATE_DIR="/nix/var/nix"
   export NIX_PATH="${NIX_PATH:-${HOME}/.nix-defexpr/channels:nixpkgs=${NIX_STATE_DIR}/profiles/per-user/root/channels/nixpkgs:${NIX_STATE_DIR}/profiles/per-user/root/channels}"
 
+  LPASS_USERNAME="jasonpickensnz@gmail.com"
+  LPASS_APPLE_ID="3603553886062660982"
+
   sign_in_to_app_store() {
-    echo "Please sign in to the App Store"
-    nix-shell -p lastpass-cli pinentry
+    local command
+    read -r -d '' command << EOM
+set -euo pipefail
+lpass login '${LPASS_USERNAME}'
+lpass show --clip --password '${LPASS_APPLE_ID}'
+echo
+echo "Please sign in to the App Store."
+echo "Your Apple ID Password has been copied to the clipboard."
+open -a "App Store"
+read -p "Press enter/return when complete.
+EOM
+    nix-shell -p lastpass-cli pinentry --run "${command}"
 
     # TODO: Get Apple ID password and read for enter key.
     exit 1
