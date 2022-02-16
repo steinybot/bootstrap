@@ -17,16 +17,16 @@
   sign_in_to_app_store() {
     local command
     read -r -d '' command <<EOM ||
-set -euxo pipefail
+set -euo pipefail
 echo
-read -p "Press enter/return to start LastPass to get Apple ID password."
+read -r -s -p $'Press enter/return to start LastPass to get Apple ID password.\n'
 lpass login '${LPASS_USERNAME}'
 lpass show --clip --password '${LPASS_APPLE_ID}'
 echo
 echo "Please sign in to the App Store."
 echo "Apple ID Password has been copied to the clipboard."
 open -a "App Store"
-read -p "Press enter/return when complete."
+read -r -s -p $'Press enter/return when complete.\n'
 exit 0
 EOM
 true # Ignore the non-zero exit code from read.
