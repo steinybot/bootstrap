@@ -15,6 +15,7 @@
   LPASS_APPLE_ID="3603553886062660982"
 
   sign_in_to_app_store() {
+    echo asdfjalsdfjk
     set -x
     echo hello
     nix-shell -p lastpass-cli pinentry --command "echo wtf"
