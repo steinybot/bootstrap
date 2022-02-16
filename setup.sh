@@ -17,7 +17,7 @@
   sign_in_to_app_store() {
     set -x
     echo hello
-    nix-shell -p lastpass-cli pinentry --command "${command}"
+    nix-shell -p lastpass-cli pinentry --command "echo wtf"
 
     # TODO: Get Apple ID password and read for enter key.
     exit 1
