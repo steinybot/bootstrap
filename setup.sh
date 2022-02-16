@@ -11,7 +11,34 @@
   NIX_STATE_DIR="/nix/var/nix"
   export NIX_PATH="${NIX_PATH:-${HOME}/.nix-defexpr/channels:nixpkgs=${NIX_STATE_DIR}/profiles/per-user/root/channels/nixpkgs:${NIX_STATE_DIR}/profiles/per-user/root/channels}"
 
-  command -v home-manager || nix-shell "https://github.com/nix-community/home-manager/archive/master.tar.gz" -A install
+  sign_in_to_app_store() {
+    echo "Please sign in to the App Store"
+    nix-shell -p lastpass-cli
+
+    # TODO: Get Apple ID password and read for enter key.
+    exit 1
+  }
+
+  install_xcode() {
+    sign_in_to_app_store
+
+    echo "Installing Xcode"
+
+    # TODO: Use mas to install Xcode.
+    exit 1
+  }
+
+  # Install Xcode.
+  # TODO: Look for Applications/Xcode.app.
+  install_xcode
+
+  install_home_manager() {
+    echo "Installing Home Manager"
+
+    nix-shell "https://github.com/nix-community/home-manager/archive/master.tar.gz" -A install
+  }
+
+  command -v home-manager >/dev/null || install_home_manager
 
   # This is a hack to bootstrap home manager. Is there a better way?
   # The double nix-shell gives us git in case XCode hasn't been setup yet.
