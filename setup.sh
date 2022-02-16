@@ -25,8 +25,9 @@ echo "Please sign in to the App Store."
 echo "Your Apple ID Password has been copied to the clipboard."
 open -a "App Store"
 read -p "Press enter/return when complete.
+exit 0
 EOM
-    nix-shell -p lastpass-cli pinentry --run "${command}"
+    nix-shell -p lastpass-cli pinentry --command "${command}"
 
     # TODO: Get Apple ID password and read for enter key.
     exit 1
