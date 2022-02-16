@@ -46,7 +46,7 @@ true # Ignore the non-zero exit code from read.
   }
 
   install_xcode() {
-    mas account >/dev/null || sign_in_to_app_store
+    mas account >/dev/null 2>&1 || sign_in_to_app_store
     auto_install_xcode || manual_install_xcode
   }
 
@@ -59,7 +59,7 @@ true # Ignore the non-zero exit code from read.
     nix-shell "https://github.com/nix-community/home-manager/archive/master.tar.gz" -A install
   }
 
-  command -v home-manager >/dev/null || install_home_manager
+  command -v home-manager >/dev/null 2>&1 || install_home_manager
 
   # This is a hack to bootstrap home manager. Is there a better way?
   # The double nix-shell gives us git in case XCode hasn't been setup yet.
