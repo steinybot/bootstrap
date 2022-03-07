@@ -19,6 +19,6 @@
   echo "Downloading the setup script and running in a sub shell"
 
   # Continue the rest of the install in a new shell.
-  sh <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/setup.sh)
+  bash <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/setup.sh)
 
 } # End of wrapping.
