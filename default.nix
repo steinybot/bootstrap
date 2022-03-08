@@ -11,7 +11,7 @@ let
 in
 pkgs.mkShell {
   shellHook = ''
-    set -exuo pipefail
+    set -euo pipefail
     export NIXPKGS_ALLOW_UNFREE=1
     home-manager -f '${homeNixFile}' -b 'backup-before-bootstrap' -v --option tarball-ttl 0 switch
   '';
