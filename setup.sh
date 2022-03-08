@@ -58,7 +58,12 @@ true # Ignore the non-zero exit code from read.
 
   install_home_manager() {
     echo "Installing Home Manager"
-    nix-shell "https://github.com/nix-community/home-manager/archive/master.tar.gz" -A install
+    # Home manager must be added as a channel or else you run into https://github.com/nix-community/home-manager/issues/1267.
+    nix-channel --add https://github.com/nix-community/home-manager/archive/master.tar.gz home-manager
+    nix-channel --update
+    nix-shell '<home-manager>' -A install
+    # Once installed the channels can be deleted (we add them back in with home manager but avoid the unnecessary backup).
+    rm ~/.nix-channels
   }
 
   command -v home-manager >/dev/null 2>&1 || install_home_manager
