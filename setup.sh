@@ -53,9 +53,6 @@ true # Ignore the non-zero exit code from read.
     sudo xcodebuild -license
   }
 
-  # Install Xcode.
-  [ -e '/Applications/Xcode.app' ] || install_xcode
-
   install_home_manager() {
     echo "Installing Home Manager"
     # Home manager must be added as a channel or else you run into https://github.com/nix-community/home-manager/issues/1267.
@@ -66,7 +63,20 @@ true # Ignore the non-zero exit code from read.
     rm ~/.nix-channels
   }
 
+  install_nix_darwin() {
+    echo "Installing nix-darwin"
+    NIX_DARWIN_TEMP_DIR="$(mktemp -d -t steinybot-bootstrap_nix-darwin)"
+    trap 'rm -rf -- "$NIX_DARWIN_TEMP_DIR"' EXIT
+    nix-build https://github.com/LnL7/nix-darwin/archive/master.tar.gz -A installer --out-link "${NIX_DARWIN_TEMP_DIR}/result"
+    "${NIX_DARWIN_TEMP_DIR}/result/bin/darwin-installer"
+    rm -rf -- "$NIX_DARWIN_TEMP_DIR"
+  }
+
+  [ -e '/Applications/Xcode.app' ] || install_xcode
+
   command -v home-manager >/dev/null 2>&1 || install_home_manager
+
+  command -v darwin-rebuild >/dev/null 2>&1 || install_nix_darwin
 
   # This is a hack to bootstrap home manager. Is there a better way?
   nix-shell "https://github.com/steinybot/bootstrap/archive/main.tar.gz" --option tarball-ttl 0 --run "exit"
