@@ -72,11 +72,18 @@ true # Ignore the non-zero exit code from read.
     rm -rf -- "$NIX_DARWIN_TEMP_DIR"
   }
 
+  install_homebrew() {
+    echo "Installing homebrew"
+    /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  }
+
   [ -e '/Applications/Xcode.app' ] || install_xcode
 
   command -v home-manager >/dev/null 2>&1 || install_home_manager
 
   command -v darwin-rebuild >/dev/null 2>&1 || install_nix_darwin
+
+  command -v brew >/dev/null 2>&1 || install_homebrew
 
   # This is a hack to bootstrap home manager. Is there a better way?
   nix-shell "https://github.com/steinybot/bootstrap/archive/main.tar.gz" --option tarball-ttl 0 --run "exit"
