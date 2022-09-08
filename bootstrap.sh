@@ -28,7 +28,7 @@
   
   check_nix
 
-  echo "Downloading the running the setup script."
+  echo "Downloading and running the setup script."
 
   # Continue the rest of the setup.
   bash <(curl -L https://raw.githubusercontent.com/steinybot/bootstrap/main/setup.sh)
